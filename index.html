@@ -186,7 +186,7 @@
       <div class="glass-card memories-card reveal-on-scroll">
         <div class="section-head">
           <h2 class="section-title">Beautiful Memories</h2>
-          <p class="section-desc">Klik fotonya buat lihat cerita lucunya ✨ (kamu juga bisa ganti pakai fotomu sendiri!)</p>
+          <p class="section-desc">Klik fotonya buat lihat cerita lucunya ✨</p>
         </div>
 
         <div class="photo-grid" id="photo-grid" role="list">
@@ -397,10 +397,7 @@
         <p id="lightbox-caption" class="lightbox-caption"></p>
         <div class="lightbox-actions">
           <button type="button" class="lb-nav-btn" id="lb-prev" aria-label="Foto sebelumnya">←</button>
-          <label class="lb-upload-btn">
-            📷 Ganti Foto Ini
-            <input type="file" id="lb-file-input" accept="image/*" hidden />
-          </label>
+          <span class="lb-counter" id="lb-counter">1 / 9</span>
           <button type="button" class="lb-nav-btn" id="lb-next" aria-label="Foto berikutnya">→</button>
         </div>
       </div>
@@ -411,72 +408,16 @@
   <audio id="bg-audio" src="music/lagu.mp3" loop preload="metadata"></audio>
 
   <!-- =========================================================
-       FLOATING UTILITY BUTTONS (SPINNING VINYL & PERSONALIZE)
+       FLOATING MUSIC PLAYER (SPINNING VINYL)
        ========================================================= -->
-  <div class="floating-controls" aria-label="Kontrol website">
+  <div class="floating-controls" aria-label="Kontrol musik">
     <button type="button" class="vinyl-btn" id="music-toggle-btn" title="Putar / Hentikan Lagu Ulang Tahun" aria-pressed="false">
       <span class="vinyl-disc" id="vinyl-disc" aria-hidden="true">
         <span class="vinyl-label"></span>
       </span>
       <span class="vinyl-text" id="music-icon">Musik</span>
     </button>
-    <button type="button" class="float-btn" id="customizer-toggle-btn" title="Edit Nama, Ucapan, WA & Lagu">
-      <span>✏️</span>
-    </button>
   </div>
-
-  <!-- =========================================================
-       PERSONALIZATION DRAWER (EDIT TEXT & PHOTOS LIVE)
-       ========================================================= -->
-  <aside id="customizer-drawer" class="customizer-drawer hidden" aria-label="Personalisasi Website">
-    <div class="drawer-header">
-      <h3>✨ Personalisasi Kartu</h3>
-      <button type="button" class="drawer-close" id="close-customizer" aria-label="Tutup panel">&times;</button>
-    </div>
-    <form id="customizer-form" class="drawer-body">
-      <label class="field">
-        <span>Nama Panggilan / Penerima</span>
-        <input type="text" id="cfg-recipient" placeholder="Misal: Sayang / Dinda / Bestie" />
-      </label>
-      <label class="field">
-        <span>Judul Kartu Ucapan</span>
-        <input type="text" id="cfg-letter-title" placeholder="Selamat Ulang Tahun Sayang" />
-      </label>
-      <label class="field">
-        <span>Isi Pesan Ulang Tahun (1 paragraf per baris)</span>
-        <textarea id="cfg-letter-body" rows="6"></textarea>
-      </label>
-      <label class="field">
-        <span>Nama Pengirim</span>
-        <input type="text" id="cfg-sender" placeholder="Nama kamu" />
-      </label>
-      <label class="field">
-        <span>Isi Hadiah / Voucher Lucu</span>
-        <input type="text" id="cfg-voucher" placeholder="Traktiran makan enak + peluk hangat" />
-      </label>
-      <label class="field">
-        <span>Label Tahun / Badge</span>
-        <input type="text" id="cfg-badge" placeholder="HAPPY BIRTHDAY DEBBY" />
-      </label>
-      <label class="field">
-        <span>Nomor WhatsApp Pengirim (opsional, format 628...)</span>
-        <input type="tel" id="cfg-whatsapp" placeholder="Misal: 6281234567890" />
-      </label>
-      <label class="field">
-        <span>Ganti Lagu Latar (.mp3 opsional)</span>
-        <input type="file" id="cfg-mp3-input" accept="audio/mpeg,audio/*" />
-      </label>
-
-      <div class="drawer-tip">
-        💡 <strong>Tips Foto:</strong> Klik foto mana pun di galeri <em>Beautiful Memories</em> lalu tekan <strong>"Ganti Foto Ini"</strong> untuk memasang foto aslimu! Semua perubahan tersimpan otomatis di browser ini.
-      </div>
-
-      <div class="drawer-actions">
-        <button type="submit" class="btn-primary">Simpan Perubahan 💖</button>
-        <button type="button" id="reset-config-btn" class="btn-secondary">Reset Default</button>
-      </div>
-    </form>
-  </aside>
 
   <!-- Toast feedback -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

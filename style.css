@@ -1078,23 +1078,14 @@ body.locked {
   background: #ffe1ea;
 }
 
-.lb-upload-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #fff0f4;
-  color: var(--crimson);
-  border: 1px solid rgba(216, 56, 74, 0.22);
+.lb-counter {
   font-size: 0.84rem;
   font-weight: 700;
-  padding: 9px 18px;
+  color: var(--crimson);
+  background: #fff0f4;
+  border: 1px solid rgba(216, 56, 74, 0.16);
+  padding: 6px 14px;
   border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.lb-upload-btn:hover {
-  background: #ffe0e9;
 }
 
 /* =========================================================

@@ -104,43 +104,7 @@
     photos: DEFAULT_PHOTOS.map((p) => ({ ...p })),
   };
 
-  function loadConfig() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return structuredClone(DEFAULT_CONFIG);
-      const parsed = JSON.parse(raw);
-      const photos =
-        Array.isArray(parsed.photos) && parsed.photos.length === 9
-          ? parsed.photos.map((p, i) =>
-              typeof p?.src === "string" && p.src.includes("Sehat%20%26%20Bijaksana")
-                ? { ...p, src: DEFAULT_PHOTOS[i].src }
-                : p
-            )
-          : DEFAULT_PHOTOS.map((p) => ({ ...p }));
-      const fixedWa =
-        !parsed.whatsapp || parsed.whatsapp === "62860471692"
-          ? DEFAULT_CONFIG.whatsapp
-          : parsed.whatsapp;
-      return {
-        ...structuredClone(DEFAULT_CONFIG),
-        ...parsed,
-        whatsapp: fixedWa,
-        photos,
-      };
-    } catch {
-      return structuredClone(DEFAULT_CONFIG);
-    }
-  }
-
-  function saveConfig(cfg) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg));
-    } catch {
-      showToast("Perubahan diterapkan (foto terlalu besar untuk disimpan permanen di cache)");
-    }
-  }
-
-  let config = loadConfig();
+  const config = structuredClone(DEFAULT_CONFIG);
 
   /* ---------------------------------------------------------
      2. CUTE WEB AUDIO API MUSIC BOX & SFX
@@ -851,7 +815,7 @@
   const lightboxModal = document.getElementById("lightbox-modal");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxCaption = document.getElementById("lightbox-caption");
-  const lbFileInput = document.getElementById("lb-file-input");
+  const lbCounter = document.getElementById("lb-counter");
   let activePhotoIdx = 0;
 
   function renderContent() {
@@ -902,6 +866,7 @@
     const item = config.photos[activePhotoIdx];
     lightboxImg.src = item.src;
     lightboxCaption.textContent = item.caption;
+    if (lbCounter) lbCounter.textContent = `${activePhotoIdx + 1} / ${config.photos.length}`;
     lightboxModal.classList.remove("hidden");
   }
 
@@ -915,34 +880,6 @@
   });
   document.getElementById("lb-prev").addEventListener("click", () => openLightbox(activePhotoIdx - 1));
   document.getElementById("lb-next").addEventListener("click", () => openLightbox(activePhotoIdx + 1));
-
-  lbFileInput.addEventListener("change", (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      // Compress slightly via canvas so localStorage can store multiple photos cleanly
-      const img = new Image();
-      img.onload = () => {
-        const maxSide = 640;
-        const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
-        const c = document.createElement("canvas");
-        c.width = Math.round(img.width * scale);
-        c.height = Math.round(img.height * scale);
-        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
-        const dataUrl = c.toDataURL("image/jpeg", 0.82);
-
-        config.photos[activePhotoIdx].src = dataUrl;
-        saveConfig(config);
-        renderContent();
-        openLightbox(activePhotoIdx);
-        showToast("Foto kenangan berhasil diperbarui! 📸✨");
-      };
-      img.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-    lbFileInput.value = "";
-  });
 
   /* ---------------------------------------------------------
      7. INTERACTIVE CUTE BIRTHDAY CAKE CANDLE
@@ -2066,75 +2003,9 @@
   });
 
   /* ---------------------------------------------------------
-     9. PERSONALIZER DRAWER, REPLAY & SCROLL OBSERVER
+     9. MUSIC TOGGLE, REPLAY & SCROLL OBSERVER
      --------------------------------------------------------- */
-  const drawer = document.getElementById("customizer-drawer");
-  const cfgRecipient = document.getElementById("cfg-recipient");
-  const cfgLetterTitle = document.getElementById("cfg-letter-title");
-  const cfgLetterBody = document.getElementById("cfg-letter-body");
-  const cfgSender = document.getElementById("cfg-sender");
-  const cfgVoucher = document.getElementById("cfg-voucher");
-  const cfgBadge = document.getElementById("cfg-badge");
-  const cfgWhatsapp = document.getElementById("cfg-whatsapp");
-  const cfgMp3Input = document.getElementById("cfg-mp3-input");
-
-  function openCustomizer() {
-    cfgRecipient.value = config.recipient;
-    cfgLetterTitle.value = config.letterTitle;
-    cfgLetterBody.value = config.letterParagraphs.join("\n");
-    cfgSender.value = config.sender;
-    cfgVoucher.value = config.voucher;
-    cfgBadge.value = config.badge;
-    if (cfgWhatsapp) cfgWhatsapp.value = config.whatsapp || "";
-    drawer.classList.remove("hidden");
-  }
-
-  if (cfgMp3Input) {
-    cfgMp3Input.addEventListener("change", (e) => {
-      const file = e.target.files?.[0];
-      if (!file || !bgAudio) return;
-      if (customMp3ObjectUrl) URL.revokeObjectURL(customMp3ObjectUrl);
-      customMp3ObjectUrl = URL.createObjectURL(file);
-      bgAudio.src = customMp3ObjectUrl;
-      bgAudio.load();
-      toggleMusic(true, true);
-      showToast(`Memutar lagu: ${file.name} 💿🎵`);
-    });
-  }
-
-  document.getElementById("customizer-toggle-btn").addEventListener("click", openCustomizer);
-  document.getElementById("close-customizer").addEventListener("click", () => drawer.classList.add("hidden"));
   document.getElementById("music-toggle-btn").addEventListener("click", () => toggleMusic());
-
-  document.getElementById("customizer-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    config.recipient = cfgRecipient.value.trim() || DEFAULT_CONFIG.recipient;
-    config.letterTitle = cfgLetterTitle.value.trim() || DEFAULT_CONFIG.letterTitle;
-    config.letterParagraphs = cfgLetterBody.value
-      .split("\n")
-      .map((l) => l.trim())
-      .filter(Boolean);
-    if (config.letterParagraphs.length === 0) {
-      config.letterParagraphs = [...DEFAULT_CONFIG.letterParagraphs];
-    }
-    config.sender = cfgSender.value.trim() || DEFAULT_CONFIG.sender;
-    config.voucher = cfgVoucher.value.trim() || DEFAULT_CONFIG.voucher;
-    config.badge = cfgBadge.value.trim() || DEFAULT_CONFIG.badge;
-    if (cfgWhatsapp) config.whatsapp = cfgWhatsapp.value.trim();
-
-    saveConfig(config);
-    renderContent();
-    drawer.classList.add("hidden");
-    showToast("Kartu ulang tahun berhasil dipersonalisasi! 💖");
-  });
-
-  document.getElementById("reset-config-btn").addEventListener("click", () => {
-    localStorage.removeItem(STORAGE_KEY);
-    config = structuredClone(DEFAULT_CONFIG);
-    renderContent();
-    openCustomizer();
-    showToast("Dikembalikan ke tampilan awal ✨");
-  });
 
   // Replay intro Cupid Bow & Arrow
   document.getElementById("replay-intro-btn").addEventListener("click", () => {
@@ -2177,7 +2048,6 @@
     if (e.key === "Escape") {
       closeLightbox();
       giftModal.classList.add("hidden");
-      drawer.classList.add("hidden");
     } else if (!lightboxModal.classList.contains("hidden")) {
       if (e.key === "ArrowLeft") openLightbox(activePhotoIdx - 1);
       if (e.key === "ArrowRight") openLightbox(activePhotoIdx + 1);
