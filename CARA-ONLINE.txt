@@ -1,0 +1,12 @@
+CARA MEMBUAT WEBSITE INI ONLINE GRATIS (30 DETIK) BIAR BISA DIKIRIM KE WHATSAPP DEBBY:
+
+1. (Opsional) Jika ingin memakai lagu MP3 favorit:
+   - Taruh file lagu di folder "music\" dan beri nama "lagu.mp3".
+2. (Opsional) Jika ingin tombol balas WhatsApp langsung masuk ke chat kamu:
+   - Buka script.js, cari baris:  whatsapp: "",
+   - Isi dengan nomor WA kamu format 628..., misalnya:  whatsapp: "6281234567890",
+3. Buka browser dan kunjungi:
+   https://app.netlify.com/drop
+4. Drag & drop seluruh folder "birthday-website" ini ke halaman Netlify Drop.
+5. Dalam beberapa detik, kamu langsung mendapat link online (contoh: https://happy-birthday-debby.netlify.app)
+   yang tinggal dikirim ke WhatsApp Debby — lengkap dengan preview judul & fotonya!

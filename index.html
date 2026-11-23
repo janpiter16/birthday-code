@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Debby Friska Aruan! 💘</title>
+  <meta name="description" content="Kejutan ulang tahun spesial untuk Debby Friska Aruan dari Janpiter Purba — penuh doa baik, kenangan lucu, dan voucher traktiran! 🎂💘" />
+  <meta name="theme-color" content="#d8384a" />
+  <!-- Open Graph / WhatsApp Link Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://janpiter16.github.io/birthday-code/" />
+  <meta property="og:title" content="Happy Birthday Debby Friska Aruan! 🎂💘" />
+  <meta property="og:description" content="Ada sesuatu yang kecil tapi spesial dari Janpiter Purba — tarik panah Cupidnya ya! 🏹🌷" />
+  <meta property="og:image" content="https://janpiter16.github.io/birthday-code/images/debby-puppy.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Happy Birthday Debby Friska Aruan! 🎂💘" />
+  <meta name="twitter:description" content="Kejutan ulang tahun lucu & hangat dari Janpiter Purba 💘🐾" />
+  <meta name="twitter:image" content="https://janpiter16.github.io/birthday-code/images/debby-puppy.jpg" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='86'>💘</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,600&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- =========================================================
+       SCENE 1: INTERACTIVE CUPID BOW & ARROW INTRO
+       ========================================================= -->
+  <section id="scene-intro" class="scene scene-intro active" aria-label="Interactive Birthday Intro">
+    <div class="intro-vignette" aria-hidden="true"></div>
+    <canvas id="intro-fx-canvas" class="fx-canvas" aria-hidden="true"></canvas>
+
+    <div class="intro-content">
+      <p class="intro-subtitle">a little something for you</p>
+
+      <!-- Glowing 3D-style glossy heart target -->
+      <div class="heart-target-wrap" id="heart-target-wrap">
+        <div class="heart-aura" aria-hidden="true"></div>
+        <div class="heart-speech" id="heart-speech" aria-live="polite">panah aku dong! 💘</div>
+
+        <svg id="target-heart" class="target-heart" viewBox="0 0 180 170" width="152" height="144" role="img" aria-label="Glowing Pink Heart Target">
+          <defs>
+            <radialGradient id="heartGrad" cx="38%" cy="30%" r="68%">
+              <stop offset="0%" stop-color="#ffd1e1" />
+              <stop offset="28%" stop-color="#ff85ad" />
+              <stop offset="68%" stop-color="#f24976" />
+              <stop offset="100%" stop-color="#c91f4d" />
+            </radialGradient>
+            <radialGradient id="heartGloss" cx="32%" cy="26%" r="36%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.85)" />
+              <stop offset="60%" stop-color="rgba(255,255,255,0.18)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+            </radialGradient>
+            <filter id="heartShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#e84371" flood-opacity="0.38" />
+            </filter>
+          </defs>
+          <path
+            d="M90 148 C90 148 22 106 22 57 C22 33 41 18 62 18 C75 18 85 25 90 34 C95 25 105 18 118 18 C139 18 158 33 158 57 C158 106 90 148 90 148 Z"
+            fill="url(#heartGrad)"
+            filter="url(#heartShadow)"
+          />
+          <path
+            d="M90 148 C90 148 22 106 22 57 C22 33 41 18 62 18 C75 18 85 25 90 34 C95 25 105 18 118 18 C139 18 158 33 158 57 C158 106 90 148 90 148 Z"
+            fill="url(#heartGloss)"
+          />
+          <!-- Cute minimal kawaii face on the heart -->
+          <g class="heart-face" id="heart-face">
+            <circle cx="71" cy="76" r="4.2" fill="#591529" />
+            <circle cx="69.5" cy="74.5" r="1.4" fill="#ffffff" />
+            <circle cx="109" cy="76" r="4.2" fill="#591529" />
+            <circle cx="107.5" cy="74.5" r="1.4" fill="#ffffff" />
+            <ellipse cx="62" cy="84" rx="6.5" ry="3.5" fill="#ff3b73" opacity="0.45" />
+            <ellipse cx="118" cy="84" rx="6.5" ry="3.5" fill="#ff3b73" opacity="0.45" />
+            <path d="M83 84 Q90 91 97 84" fill="none" stroke="#591529" stroke-width="3" stroke-linecap="round" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Interactive Cupid Bow & Arrow SVG Overlay -->
+    <svg id="bow-stage" class="bow-stage" aria-label="Cupid Bow and Arrow">
+      <defs>
+        <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c97d63" />
+          <stop offset="50%" stop-color="#a85644" />
+          <stop offset="100%" stop-color="#7c382c" />
+        </linearGradient>
+      </defs>
+      <!-- Aiming trajectory dotted arc -->
+      <path id="aim-guide" class="aim-guide" d="" fill="none" />
+      <!-- Bow group positioned dynamically by JS -->
+      <g id="bow-group" class="bow-group">
+        <!-- Bowstring -->
+        <path id="bow-string" d="M -30 -52 Q -30 0 -30 52" fill="none" stroke="#8a4d3f" stroke-width="2" stroke-linecap="round" />
+        <!-- Bow limbs -->
+        <path id="bow-limbs" d="M -30 -52 C 12 -36 18 -14 14 0 C 18 14 12 36 -30 52" fill="none" stroke="url(#woodGrad)" stroke-width="5.5" stroke-linecap="round" />
+        <!-- Bow center grip -->
+        <path d="M 11 -9 L 15 0 L 11 9" fill="none" stroke="#d9536f" stroke-width="5" stroke-linecap="round" />
+        <!-- Nocked Arrow -->
+        <g id="nocked-arrow">
+          <line x1="-30" y1="0" x2="48" y2="0" stroke="#9e5243" stroke-width="2.6" stroke-linecap="round" />
+          <!-- Fletching (feathers) -->
+          <path d="M -30 0 L -42 -8 L -34 0 L -42 8 Z" fill="#f27999" />
+          <path d="M -22 0 L -31 -6 L -25 0 L -31 6 Z" fill="#ffabc2" />
+          <!-- Heart arrowhead -->
+          <path d="M 55 0 C 48 -7 41 -4 44 0 C 41 4 48 7 55 0 Z" fill="#e13b5c" />
+        </g>
+        <!-- Invisible generous drag hit area -->
+        <circle id="bow-hitarea" cx="0" cy="0" r="84" fill="transparent" />
+      </g>
+
+      <!-- Flying Arrow -->
+      <g id="flying-arrow" class="flying-arrow" style="opacity:0; pointer-events:none;">
+        <line x1="-36" y1="0" x2="36" y2="0" stroke="#9e5243" stroke-width="2.8" stroke-linecap="round" />
+        <path d="M -36 0 L -48 -8 L -40 0 L -48 8 Z" fill="#f27999" />
+        <path d="M -28 0 L -37 -6 L -31 0 L -37 6 Z" fill="#ffabc2" />
+        <path d="M 45 0 C 37 -8 30 -5 33 0 C 30 5 37 8 45 0 Z" fill="#e13b5c" />
+      </g>
+    </svg>
+
+    <div class="intro-footer">
+      <p class="pull-instruction" id="pull-instruction">PULL &amp; RELEASE</p>
+      <p class="pull-subhint" id="pull-subhint">Tarik tali panah ke belakang lalu lepaskan ke arah hati</p>
+      <button type="button" id="quick-shoot-btn" class="quick-shoot-btn hidden">Bantu Panah Otomatis 💘</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCENE 2: CRIMSON CINEMA CURTAIN REVEAL
+       ========================================================= -->
+  <section id="scene-reveal" class="scene scene-reveal" aria-hidden="true">
+    <div class="crimson-wipe" id="crimson-wipe"></div>
+    <div class="letterbox letterbox-top"></div>
+    <div class="letterbox letterbox-bottom"></div>
+
+    <div class="reveal-stage">
+      <p class="reveal-pre">make a wish...</p>
+      <h1 class="reveal-title" id="reveal-title">
+        <span class="reveal-line">Happy</span>
+        <span class="reveal-line">Birthday</span>
+      </h1>
+      <p class="reveal-post" id="reveal-post">to someone worth celebrating</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCENE 3, 4, 5: BLOOMING HEART TREE + MEMORIES + LETTER
+       ========================================================= -->
+  <main id="scene-main" class="scene-main hidden" aria-hidden="true">
+    <!-- Persistent blooming heart tree & falling petals canvas -->
+    <canvas id="tree-canvas" class="tree-canvas" aria-hidden="true"></canvas>
+
+    <!-- Floating Poppable Pastel Balloons Layer -->
+    <div id="balloon-layer" class="balloon-layer" aria-hidden="true"></div>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section" id="hero-section">
+      <div class="top-brand">Blooming Wishes</div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-avatar-row">
+            <img src="images/debby-pose-3.jpg" alt="Debby Friska Aruan" class="hero-avatar" />
+            <div>
+              <p class="hero-eyebrow">and... make a wish ✨</p>
+              <div class="hero-recipient-pill" id="hero-recipient-pill">untuk Debby Friska Aruan 🌷</div>
+            </div>
+          </div>
+          <h1 class="hero-title">
+            Happy<br />Birthday
+          </h1>
+          <p class="hero-sub">Here's to a new, dear blossom — semoga selalu dirahmati Tuhan, sehat jiwa &amp; raga, dan penuh kebahagiaan!</p>
+        </div>
+        <div class="hero-tree-spacer" aria-hidden="true"></div>
+      </div>
+
+      <a href="#memories-section" class="scroll-pill" id="scroll-to-memories">
+        <span>SCROLL FOR MEMORIES</span>
+        <span class="scroll-arrow">↓</span>
+      </a>
+    </header>
+
+    <!-- BEAUTIFUL MEMORIES 3x3 PHOTO GRID -->
+    <section class="content-section memories-section" id="memories-section">
+      <div class="glass-card memories-card reveal-on-scroll">
+        <div class="section-head">
+          <h2 class="section-title">Beautiful Memories</h2>
+          <p class="section-desc">Klik fotonya buat lihat cerita lucunya ✨ (kamu juga bisa ganti pakai fotomu sendiri!)</p>
+        </div>
+
+        <div class="photo-grid" id="photo-grid" role="list">
+          <!-- Populated dynamically by script.js -->
+        </div>
+      </div>
+
+      <!-- Interactive Cute Birthday Cake Divider -->
+      <div class="cake-divider reveal-on-scroll" id="cake-divider">
+        <button type="button" class="cake-btn" id="cake-btn" aria-label="Tiup lilin ulang tahun">
+          <div class="mini-cake">
+            <div class="candle">
+              <div class="flame" id="candle-flame"></div>
+              <div class="smoke" id="candle-smoke"></div>
+            </div>
+            <div class="cake-icing"></div>
+            <div class="cake-body">
+              <span class="cake-eye left"></span>
+              <span class="cake-eye right"></span>
+              <span class="cake-smile"></span>
+            </div>
+          </div>
+          <span class="cake-hint" id="cake-hint">Klik kuenya buat tiup lilin! 🎂💨</span>
+        </button>
+        <p class="note-arrow">A Note For You ↓</p>
+      </div>
+    </section>
+
+    <!-- HEARTFELT BIRTHDAY LETTER SECTION (WITH INTERACTIVE ENVELOPE) -->
+    <section class="content-section letter-section" id="letter-section">
+      <!-- Sealed Envelope State -->
+      <div class="envelope-stage reveal-on-scroll" id="envelope-stage">
+        <button type="button" class="envelope-btn" id="open-envelope-btn" aria-label="Buka amplop surat untuk Debby">
+          <div class="envelope-wrapper">
+            <div class="envelope-back"></div>
+            <div class="envelope-letter-peek">
+              <span>Selamat Ulang Tahun, Debby... 🌷</span>
+            </div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <div class="envelope-seal" aria-hidden="true">💘</div>
+          </div>
+          <p class="envelope-to">Khusus untuk <strong>Debby Friska Aruan</strong></p>
+          <span class="envelope-cta-pill">💌 Klik Amplop untuk Membuka Surat</span>
+        </button>
+      </div>
+
+      <!-- Opened Letter Card -->
+      <article class="glass-card letter-card hidden" id="letter-card">
+        <div class="letter-badge">💌 A Message For You</div>
+        <h2 class="letter-title" id="letter-title">Selamat Ulang Tahun, Debby Friska Aruan</h2>
+        <div class="letter-body" id="letter-body">
+          <!-- Populated dynamically from CONFIG -->
+        </div>
+        <p class="letter-signature" id="letter-signature">- Janpiter Purba -</p>
+      </article>
+
+      <!-- Mini-Game Lucu: Tap Doakan Rezeki Janpiter -->
+      <div class="glass-card rezeki-card reveal-on-scroll" id="rezeki-card">
+        <div class="rezeki-badge">🎮 MINI-GAME LUCU</div>
+        <h3 class="rezeki-title">Bantu Doakan Rezeki Janpiter Yuk! 💸🙏</h3>
+        <p class="rezeki-sub">Makin banyak tap, level traktirannya makin naik hehe~</p>
+
+        <div class="rezeki-meter-wrap">
+          <div class="rezeki-tier-label" id="rezeki-tier-label">Level 1: Traktiran Tipis-Tipis 🧋</div>
+          <div class="rezeki-bar-track">
+            <div class="rezeki-bar-fill" id="rezeki-bar-fill" style="width: 4%;"></div>
+          </div>
+          <div class="rezeki-milestones">
+            <span>🧋 Tipis-Tipis</span>
+            <span>🍰 Traktir Enak</span>
+            <span>🍣 Sultan!</span>
+          </div>
+        </div>
+
+        <button type="button" class="rezeki-tap-btn" id="rezeki-tap-btn">
+          <span>🙏 Doakan Rezeki Lancar!</span>
+          <span class="rezeki-count-pill" id="rezeki-count-pill">0x</span>
+        </button>
+        <p class="rezeki-reaction" id="rezeki-reaction">Ayo tap tombolnya buat upgrade traktiran! 😆✨</p>
+      </div>
+
+      <!-- Feature #3: Gacha Kapsul Pesan Manis Acak -->
+      <div class="glass-card capsule-card reveal-on-scroll" id="capsule-card">
+        <div class="capsule-badge">🥠 KAPSUL PESAN MANIS</div>
+        <h3 class="capsule-title">Ambil 1 Pesan Rahasia untuk Debby 💘</h3>
+        <p class="capsule-sub">Ada 8 catatan kecil khusus dari Janpiter — coba kumpulkan semuanya ya!</p>
+
+        <div class="capsule-progress-row">
+          <div class="capsule-dots" id="capsule-dots" aria-label="Progres koleksi pesan"></div>
+          <span class="capsule-counter" id="capsule-counter">0 / 8 terkumpul</span>
+        </div>
+
+        <div class="capsule-note-stage">
+          <div class="capsule-note-paper" id="capsule-note-paper">
+            <span class="capsule-note-emoji" id="capsule-note-emoji">🥠</span>
+            <p class="capsule-note-text" id="capsule-note-text">Klik tombol kapsul di bawah untuk membuka pesan rahasia pertamamu ✨</p>
+          </div>
+        </div>
+
+        <button type="button" class="capsule-draw-btn" id="capsule-draw-btn">
+          <span class="capsule-icon" id="capsule-icon">🥠</span>
+          <span id="capsule-btn-label">Buka 1 Kapsul Pesan!</span>
+        </button>
+      </div>
+
+      <!-- Feature #1: Kartu Gosok Kejutan (Scratch Card) -->
+      <div class="glass-card scratch-card-wrap reveal-on-scroll" id="scratch-card-wrap">
+        <div class="scratch-badge">🪙 KARTU GOSOK KEJUTAN</div>
+        <h3 class="scratch-title">Gosok untuk Membuka Bonus Rahasia! ✨</h3>
+        <p class="scratch-sub">Gesek lapisan emas di bawah pakai kursor atau jarimu ya~</p>
+
+        <div class="scratch-box" id="scratch-box">
+          <div class="scratch-secret" aria-live="polite">
+            <span class="scratch-secret-tag">🌟 BONUS SPESIAL PAS KETEMU NANTI 🌟</span>
+            <p class="scratch-secret-main" id="scratch-secret-main">
+              1x Bebas Request Jajan + Foto Bareng + Ngobrol Seru Tanpa Buru-Buru! 🍰📸💘
+            </p>
+            <span class="scratch-secret-foot">Khusus untuk Debby Friska Aruan — dari Janpiter Purba ✨</span>
+          </div>
+          <canvas id="scratch-canvas" class="scratch-canvas" aria-label="Area gosok kartu kejutan"></canvas>
+        </div>
+
+        <div class="scratch-footer">
+          <span class="scratch-status" id="scratch-status">Gosok pelan-pelan ya... 🪙</span>
+          <div class="scratch-actions">
+            <button type="button" class="scratch-mini-btn" id="scratch-reveal-btn">Buka Langsung ✨</button>
+            <button type="button" class="scratch-mini-btn hidden" id="scratch-reset-btn">Gosok Ulang 🔄</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-cta-wrap reveal-on-scroll">
+        <button type="button" class="gift-cta-btn" id="open-gift-btn">
+          <span class="btn-icon">🎁</span>
+          <span>Send a Gift</span>
+        </button>
+      </div>
+
+      <!-- Feature: Kotak Balasan & Pilih Menu Traktiran ke WhatsApp -->
+      <div class="glass-card wa-reply-card reveal-on-scroll" id="wa-reply-card">
+        <div class="wa-badge">📲 BALAS &amp; REQUEST TRAKTIRAN</div>
+        <h3 class="wa-title">Mau Traktiran Apa Nanti, Debby? 🍰🧋</h3>
+        <p class="wa-sub">Pilih menu favoritmu &amp; tulis balasan singkat — langsung terkirim ke WhatsApp Janpiter!</p>
+
+        <div class="treat-chips" id="treat-chips" role="group" aria-label="Pilih menu traktiran">
+          <button type="button" class="treat-chip active" data-treat="Boba / Minuman Manis 🧋">🧋 Boba / Minuman Manis</button>
+          <button type="button" class="treat-chip" data-treat="Kue / Dessert Lucu 🍰">🍰 Kue / Dessert</button>
+          <button type="button" class="treat-chip" data-treat="Ngopi Santai ☕">☕ Ngopi Santai</button>
+          <button type="button" class="treat-chip" data-treat="Makan Enak Bareng 🍽️">🍽️ Makan Enak</button>
+          <button type="button" class="treat-chip" data-treat="Terserah Janpiter aja yang penting ketemu 💘">💘 Terserah Janpiter</button>
+        </div>
+
+        <textarea
+          id="wa-reply-input"
+          class="wa-reply-input"
+          rows="3"
+          placeholder="Tulis balasan, wish, atau doa balik buat Janpiter di sini ya... ✨"
+        ></textarea>
+
+        <button type="button" class="wa-send-btn" id="wa-send-btn">
+          <span>💬</span>
+          <span>Kirim ke WhatsApp Janpiter</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Made with 💘 &amp; blooming wishes • <button type="button" class="replay-link" id="replay-intro-btn">Ulangi Panah Cupid 🏹</button></p>
+    </footer>
+  </main>
+
+  <!-- =========================================================
+       SCENE 6: SURPRISE GIFT MODAL + FIREWORKS CANVAS
+       ========================================================= -->
+  <canvas id="fireworks-canvas" class="fireworks-canvas" aria-hidden="true"></canvas>
+
+  <div id="gift-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title">
+    <div class="gift-modal-card">
+      <button type="button" class="modal-close" id="close-gift-modal" aria-label="Tutup modal">&times;</button>
+      <div class="gift-box-anim" aria-hidden="true">🎁</div>
+      <h3 class="gift-modal-title" id="gift-modal-title">A Special Birthday Gift for You!</h3>
+      <p class="gift-modal-text" id="gift-modal-text">
+        May your day be filled with joy, love, laughter, and endless smiles. All my warmest wishes are always with you.
+      </p>
+      <div class="gift-voucher-box" id="gift-voucher-box">
+        <span class="voucher-label">🎟️ VOUCHER SPESIAL</span>
+        <p class="voucher-desc" id="gift-voucher-desc">Bebas request makan enak + jajan manis sepuasnya hari ini! 🍰🧋</p>
+      </div>
+      <div class="gift-year-pill" id="gift-year-pill">✨ HAPPY BIRTHDAY 2026 ✨</div>
+      <div class="gift-btn-group" id="gift-btn-group">
+        <button type="button" class="claim-btn" id="claim-wishes-btn">Claim Wishes &amp; Traktiran ❤️</button>
+        <button type="button" class="download-voucher-btn" id="download-voucher-btn">📥 Simpan Voucher ke Galeri (PNG)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PHOTO LIGHTBOX MODAL
+       ========================================================= -->
+  <div id="lightbox-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Photo preview">
+    <div class="lightbox-card">
+      <button type="button" class="modal-close" id="close-lightbox" aria-label="Tutup foto">&times;</button>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Birthday memory" />
+      </div>
+      <div class="lightbox-meta">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <div class="lightbox-actions">
+          <button type="button" class="lb-nav-btn" id="lb-prev" aria-label="Foto sebelumnya">←</button>
+          <label class="lb-upload-btn">
+            📷 Ganti Foto Ini
+            <input type="file" id="lb-file-input" accept="image/*" hidden />
+          </label>
+          <button type="button" class="lb-nav-btn" id="lb-next" aria-label="Foto berikutnya">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional Custom MP3 Background Music (taruh file music/lagu.mp3) -->
+  <audio id="bg-audio" src="music/lagu.mp3" loop preload="metadata"></audio>
+
+  <!-- =========================================================
+       FLOATING UTILITY BUTTONS (SPINNING VINYL & PERSONALIZE)
+       ========================================================= -->
+  <div class="floating-controls" aria-label="Kontrol website">
+    <button type="button" class="vinyl-btn" id="music-toggle-btn" title="Putar / Hentikan Lagu Ulang Tahun" aria-pressed="false">
+      <span class="vinyl-disc" id="vinyl-disc" aria-hidden="true">
+        <span class="vinyl-label"></span>
+      </span>
+      <span class="vinyl-text" id="music-icon">Musik</span>
+    </button>
+    <button type="button" class="float-btn" id="customizer-toggle-btn" title="Edit Nama, Ucapan, WA & Lagu">
+      <span>✏️</span>
+    </button>
+  </div>
+
+  <!-- =========================================================
+       PERSONALIZATION DRAWER (EDIT TEXT & PHOTOS LIVE)
+       ========================================================= -->
+  <aside id="customizer-drawer" class="customizer-drawer hidden" aria-label="Personalisasi Website">
+    <div class="drawer-header">
+      <h3>✨ Personalisasi Kartu</h3>
+      <button type="button" class="drawer-close" id="close-customizer" aria-label="Tutup panel">&times;</button>
+    </div>
+    <form id="customizer-form" class="drawer-body">
+      <label class="field">
+        <span>Nama Panggilan / Penerima</span>
+        <input type="text" id="cfg-recipient" placeholder="Misal: Sayang / Dinda / Bestie" />
+      </label>
+      <label class="field">
+        <span>Judul Kartu Ucapan</span>
+        <input type="text" id="cfg-letter-title" placeholder="Selamat Ulang Tahun Sayang" />
+      </label>
+      <label class="field">
+        <span>Isi Pesan Ulang Tahun (1 paragraf per baris)</span>
+        <textarea id="cfg-letter-body" rows="6"></textarea>
+      </label>
+      <label class="field">
+        <span>Nama Pengirim</span>
+        <input type="text" id="cfg-sender" placeholder="Nama kamu" />
+      </label>
+      <label class="field">
+        <span>Isi Hadiah / Voucher Lucu</span>
+        <input type="text" id="cfg-voucher" placeholder="Traktiran makan enak + peluk hangat" />
+      </label>
+      <label class="field">
+        <span>Label Tahun / Badge</span>
+        <input type="text" id="cfg-badge" placeholder="HAPPY BIRTHDAY DEBBY" />
+      </label>
+      <label class="field">
+        <span>Nomor WhatsApp Pengirim (opsional, format 628...)</span>
+        <input type="tel" id="cfg-whatsapp" placeholder="Misal: 6281234567890" />
+      </label>
+      <label class="field">
+        <span>Ganti Lagu Latar (.mp3 opsional)</span>
+        <input type="file" id="cfg-mp3-input" accept="audio/mpeg,audio/*" />
+      </label>
+
+      <div class="drawer-tip">
+        💡 <strong>Tips Foto:</strong> Klik foto mana pun di galeri <em>Beautiful Memories</em> lalu tekan <strong>"Ganti Foto Ini"</strong> untuk memasang foto aslimu! Semua perubahan tersimpan otomatis di browser ini.
+      </div>
+
+      <div class="drawer-actions">
+        <button type="submit" class="btn-primary">Simpan Perubahan 💖</button>
+        <button type="button" id="reset-config-btn" class="btn-secondary">Reset Default</button>
+      </div>
+    </form>
+  </aside>
+
+  <!-- Toast feedback -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
